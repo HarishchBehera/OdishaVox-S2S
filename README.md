@@ -136,3 +136,6 @@ We welcome contributions from everyone!
 Please see [CONTRIBUTING.md][contrib] for details on how to get started, our code of conduct, and best practices.
 
 [contrib]: /docs/CONTRIBUTING.md
+
+## Contributer
+- Harish Chandra Behera
