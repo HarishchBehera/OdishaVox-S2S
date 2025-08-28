@@ -45,7 +45,7 @@ brew install node
 ## Clone the repo
 
 ```
-git clone https://github.com/taufique-0105/OdishaVox.git
+git clone https://github.com/taufique-0105/OdishaVox-S2S.git
 ```
 
 ###
