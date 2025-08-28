@@ -3,9 +3,9 @@ import User from "../models/userModel.js";
 
 const registerUser = async (req, res) => {
     try {
-        const { name, username, email, password, confirmPassword } = req.body;
+        const { name, email, password, confirmPassword } = req.body;
 
-        if (!name || !username || !email || !password || !confirmPassword) {
+        if (!name || !email || !password || !confirmPassword) {
             return res.status(400).json({ message: "Please enter all fields" });
         }
 
@@ -20,7 +20,6 @@ const registerUser = async (req, res) => {
         }
 
         const user = await User.create({
-            username,
             email,
             password,
         });
@@ -29,7 +28,6 @@ const registerUser = async (req, res) => {
             logger.info("User registered successfully", { userId: user._id, email: user.email });
             res.status(201).json({
                 _id: user._id,
-                username: user.username,
                 email: user.email,
                 message: "User registered successfully"
             });

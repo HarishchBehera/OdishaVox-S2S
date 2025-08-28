@@ -18,6 +18,7 @@ import feedbackRouter from "./api/v1/routes/feedbackRouter.js";
 import contactInfoRouter from "./api/v1/routes/contactInfoRouter.js";
 import loginRouter from "./api/v1/routes/loginRouter.js";
 import registerUserRouter from "./api/v1/routes/registerUserRouter.js";
+import googleAuthRouter from "./api/v1/routes/googleAuthRouter.js";
 import userRouter from "./api/v1/routes/userRouter.js";
 
 // ES6 modules __dirname equvalant
@@ -57,8 +58,8 @@ app.use(expressWinston.logger({
 
 // Root Routes
 app.get("/", (req, res) => {
-	logger.info("OdishaVox API accessed")
-  res.send("Hello, this is the API for OdishaVox!");
+	logger.info("BharatVox API accessed")
+  res.send("Hello, this is the API for BharatVox!");
 });
 
 // API Routes
@@ -68,8 +69,9 @@ app.use('/api/v1/sts', speechToSpeechRouter);
 app.use('/api/v1/ttt', textToTextRouter);
 app.use('/api/v1/feedback', feedbackRouter);
 app.use('/api/v1/contactinfo', contactInfoRouter);
-app.use('/api/v1/login', loginRouter);
-app.use('/api/v1', registerUserRouter);
+app.use('/api/v1/auth/login', loginRouter);
+app.use('/api/v1/auth/register', registerUserRouter);
+app.use('/api/v1/auth/google', googleAuthRouter)
 app.use('/api/v1/user', userRouter);
 
 

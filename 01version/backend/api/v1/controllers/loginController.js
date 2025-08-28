@@ -32,7 +32,6 @@ const loginUser = async (req, res) => {
             logger.info("User logged in successfully", { userId: user._id, email: user.email });
             res.status(200).json({
                 _id: user._id,
-                username: user.username,
                 email: user.email,
                 token: appToken, // Include the application's JWT token
             });

@@ -11,11 +11,6 @@ const userSchema = mongoose.Schema(
           minlength: 3,
           default: "Anonymous",
         },
-        username: {
-            type: String,
-            required: true,
-            unique: true,
-        },
         email: {
             type: String,
             required: true,
