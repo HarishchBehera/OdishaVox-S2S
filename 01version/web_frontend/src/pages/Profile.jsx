@@ -44,27 +44,37 @@ const Profile = () => {
     fetchUserProfile();
   }, []);
 
+  // ✅ Logout functionality
   // const handleLogout = async () => {
   //   try {
-  //     const response = await fetch(`${import.meta.env.VITE_API_URL}/logout`, {
-  //       method: 'GET',
+  //     // Call backend logout if available (optional)
+  //     await fetch(`${import.meta.env.VITE_API_URL}/api/v1/auth/logout`, {
+  //       method: 'POST', // Prefer POST for logout
   //       headers: {
   //         'Content-Type': 'application/json',
   //         'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
   //       },
-  //     });
+  //     }).catch(() => {}); // Ignore errors, client logout anyway
 
-  //     if (response.ok) {
-  //       localStorage.removeItem('authToken');
-  //       navigate('/login');
-  //     } else {
-  //       setError('Failed to log out. Please try again.');
-  //     }
+  //     // Remove token from local storage
+  //     localStorage.removeItem('authToken');
+
+  //     // Redirect to login
+  //     navigate('/login');
   //   } catch (err) {
   //     console.error('Logout error:', err);
   //     setError('An error occurred during logout.');
   //   }
   // };
+
+  const handleLogout = () => {
+    // Remove JWT from localStorage
+    localStorage.removeItem("token");
+    // Optional: also clear user details
+    localStorage.removeItem("user");
+    // Redirect to login
+    window.location.href = "/login";
+  };
 
   const handleRetry = () => {
     setError(null);
@@ -149,14 +159,9 @@ const Profile = () => {
             </div>
           )}
         </div>
-        {/* <div className="mt-8 flex justify-center space-x-4">
-          <button
-            onClick={() => navigate('/edit-profile')}
-            className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
-            aria-label="Edit profile"
-          >
-            Edit Profile
-          </button>
+
+        {/* ✅ Logout button */}
+        <div className="mt-8 flex justify-center space-x-4">
           <button
             onClick={handleLogout}
             className="px-6 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition-colors"
@@ -164,7 +169,7 @@ const Profile = () => {
           >
             Log Out
           </button>
-        </div> */}
+        </div>
       </div>
     </div>
   );
